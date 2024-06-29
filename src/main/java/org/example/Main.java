@@ -9,3 +9,6 @@ public class Main {
         SpringApplication.run(Main.class, args);
     }
 }
+
+//  http://localhost:8080/swagger-ui.html
+//  http://localhost:8080/api-docs

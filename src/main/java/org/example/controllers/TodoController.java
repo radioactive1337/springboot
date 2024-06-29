@@ -44,8 +44,9 @@ public class TodoController {
         Todo todo = todoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Todo not found with id: " + id));
 
-        todo.setTitle(todoDetails.getTitle());
+        todo.setTodo(todoDetails.getTodo());
         todo.setCompleted(todoDetails.isCompleted());
+        todo.setUserId(todoDetails.getUserId());
 
         Todo updatedTodo = todoRepository.save(todo);
         return ResponseEntity.ok(updatedTodo);
@@ -60,4 +61,5 @@ public class TodoController {
         todoRepository.delete(todo);
         return ResponseEntity.ok().build();
     }
+
 }
