@@ -62,8 +62,11 @@ public class TodoController {
             @ApiResponse(responseCode = "400", description = "Bad Request"),
             @ApiResponse(responseCode = "404", description = "Not Found")
     })
-    public ResponseEntity<Todo> updateTodo(@PathVariable Long id, @RequestBody Todo todoDetails) {
-        Todo updatedTodo = todoService.updateTodo(id, todoDetails);
+    public ResponseEntity<Todo> updateTodo(@PathVariable Long id,
+                                           @RequestParam(required = false) String todo,
+                                           @RequestParam(required = false) boolean completed,
+                                           @RequestParam(required = false) int userId) {
+        Todo updatedTodo = todoService.updateTodo(id, todo, completed, userId);
         return ResponseEntity.ok(updatedTodo);
     }
 
@@ -77,4 +80,5 @@ public class TodoController {
         todoService.deleteTodo(id);
         return ResponseEntity.noContent().build();
     }
+
 }

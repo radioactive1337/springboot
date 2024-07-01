@@ -1,5 +1,9 @@
 package org.example.services;
 
+import javax.transaction.Transactional;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+
 import org.example.models.Todo;
 import org.example.repo.TodoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,20 +29,21 @@ public class TodoService {
         return todoRepository.save(todo);
     }
 
-    public Todo getTodoById(Long id) {
+    public Todo getTodoById(@Valid @NotNull Long id) {
         return todoRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Todo not found with id: " + id));
     }
 
-    public Todo updateTodo(Long id, Todo todoDetails) {
-        Todo todo = getTodoById(id);
-        todo.setTodo(todoDetails.getTodo());
-        todo.setCompleted(todoDetails.isCompleted());
-        todo.setUserId(todoDetails.getUserId());
-        return todoRepository.save(todo);
+    @Transactional
+    public Todo updateTodo(@Valid @NotNull Long id, String todo, boolean completed, int userId) {
+        Todo todoObject = getTodoById(id);
+        todoObject.setTodo(todo);
+        todoObject.setCompleted(completed);
+        todoObject.setUserId(userId);
+        return todoRepository.save(todoObject);
     }
 
-    public void deleteTodo(Long id) {
+    public void deleteTodo(@Valid @NotNull Long id) {
         Todo todo = getTodoById(id);
         todoRepository.delete(todo);
     }

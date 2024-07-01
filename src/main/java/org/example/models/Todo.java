@@ -19,16 +19,9 @@ public class Todo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Schema(description = "The unique identifier of the todo")
     private Long id;
-
-//    @Schema(description = "The title of the todo")
     private String todo;
-
-//    @Schema(description = "The completion status of the todo")
     private boolean completed;
-
-//    @Schema(description = "Id of the todo creator")
     private int userId;
 
 }
