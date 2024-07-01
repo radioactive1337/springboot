@@ -25,6 +25,11 @@ bootJar {
     mainClassName = 'org.example.Main'
 }
 
+tasks.register('bootRun', JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    main = 'org.example.Main'
+}
+
 //test {
 //    useJUnitPlatform()
 //}
