@@ -1,9 +1,3 @@
-<style>
-h1 {color: #0000FF;}
-h2 {color: #FF8C00;}
-h3 {color: #8B0000;}
-</style>
-
 # Spring Boot CRUD Application
 
 This is a simple Spring Boot application created for practice
