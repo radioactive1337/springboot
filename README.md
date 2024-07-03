@@ -63,7 +63,7 @@ or
 java -jar build/libs/springboot-1.0-SNAPSHOT.jar --server.port=<your port>
 ~~~
 
-The swagger doc for application will start on `http://localhost:8080`.
+The application will start on http://localhost:8080.
 
 ## API Documentation
 
